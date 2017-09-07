@@ -11,12 +11,13 @@ pipeline {
   stages {
     stage('Create tar') {
       steps {
-       sh 'tar zcf $JENKINS_HOME/`date +%y%m%d`-backup.tar.gz ~/somefile.txt'
+       sh 'tar zcf $JENKINS_HOME/`date +%Y%m%d`-backup.tar.gz ~/somefile.txt'
       }
     }
     stage('transfer tarfile to s3') {
       steps {
-        sh 'aws s3 cp $JENKINS_HOME/`date +%y%m%d`-backup.tar.gz $PREFIX/`date +%y%m%d`-backup.tar.gz'
+        sh 'aws s3 cp $JENKINS_HOME/`date +%Y%m%d`-backup.tar.gz $PREFIX/`date +%Y%m%d`-backup.tar.gz'
+
       }
     }
   }
