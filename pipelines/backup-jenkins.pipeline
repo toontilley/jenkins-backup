@@ -9,12 +9,12 @@ pipeline {
   stages {
     stage('Create tar') {
       steps {
-        sh 'tar zcf ~/`date +%y%m%d`-somerar.tar.gz somefile.txt'
+        sh 'tar zcf ~/`date +%y%m%d`-somerar.tar.gz ~/somefile.txt'
       }
     }
     stage('transfer tarfile to s3') {
       steps {
-        sh 'aws s3 cp ~/somerar.tar.gz $PREFIX/somerar.tar.gz'
+        sh 'aws s3 cp ~/`date +%y%m%d`-somerar.tar.gz $PREFIX/somerar.tar.gz'
       }
     }
   }
