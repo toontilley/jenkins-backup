@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Create tar') {
       steps {
-        sh 'tar zcf ~/"(date '+%y-%m-%d')-somerar.tar.gz" somefile.txt'
+        sh 'tar zcf ~/"(date \'+%y-%m-%d\')-somerar.tar.gz" somefile.txt'
       }
     }
     stage('transfer tarfile to s3') {
