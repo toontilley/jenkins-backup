@@ -20,10 +20,10 @@ pipeline {
 
       }
     }
-    stage('remove tarfile from server') {
-      steps {
-      	sh 'rm $JENKINS_HOME/`date +%Y%m%d`-backup.tar.gz'
-      }
+  }
+  post {
+    always {
+      sh 'rm $JENKINS_HOME/`date +%Y%m%d`-backup.tar.gz'
     }
   }
 }
