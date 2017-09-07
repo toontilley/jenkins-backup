@@ -6,16 +6,17 @@ pipeline {
     AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
     AWS_DEFAULT_REGION = 'eu-west-1'
     JENKINS_HOME = '/var/lib/jenkins'
+    FILE_NAME = '`date +%Y%m%d`-backup.tar.gz'
   }
   stages {
     stage('Create tar') {
       steps {
-        sh 'tar zcf $JENKINS_HOME/`date +%y%m%d`-backup.tar.gz ~/somefile.txt'
+        sh 'tar zcf $JENKINS_HOME/FILE_NAME ~/somefile.txt'
       }
     }
     stage('transfer tarfile to s3') {
       steps {
-        sh 'aws s3 cp $JENKINS_HOME/`date +%y%m%d`-backup.tar.gz $PREFIX/somerar.tar.gz'
+        sh 'aws s3 cp $JENKINS_HOME/FILENAME $PREFIX/FILE_NAME'
       }
     }
   }
