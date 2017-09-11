@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  triggers {
+    cron('0 30 22 * *')
+  }
 
   environment {
     PREFIX = 's3://marks-first-test-bucket-for-testing'
