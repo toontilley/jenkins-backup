@@ -27,7 +27,7 @@ pipeline {
   }
   post {
     always {
-      node('master_node') {
+      node {
         sh 'rm $JENKINS_HOME/`date +%Y%m%d`-backup.tar.gz'
       }
     }
