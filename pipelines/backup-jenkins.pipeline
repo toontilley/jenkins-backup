@@ -1,8 +1,6 @@
 pipeline {
   agent any
-  triggers {
-    cron('0 30 22 * *')
-  }
+
   environment {
     PREFIX = 's3://marks-first-test-bucket-for-testing'
     AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
